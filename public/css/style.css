@@ -1,0 +1,18 @@
+body {
+    font-family: 'Tahoma', sans-serif;
+    background-color: #f0f2f5;
+    text-align: center;
+    padding: 2rem;
+}
+h1 {
+    color: #1a73e8;
+}
+button {
+    background-color: #1a73e8;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    font-size: 1rem;
+    border-radius: 8px;
+    cursor: pointer;
+}
