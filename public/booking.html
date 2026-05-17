@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="fa" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>رزرو نوبت آنلاین | کلینیک دکتر اعتصامی فرد</title>
+    <link rel="stylesheet" href="css/style.css">
+    <style>
+        .booking-form { max-width: 600px; margin: 40px auto; background: white; padding: 30px; border-radius: 20px; box-shadow: 0 8px 20px rgba(0,0,0,0.1); }
+        .booking-form input, .booking-form select, .booking-form textarea { width: 100%; padding: 12px; margin-bottom: 15px; border: 1px solid #ccc; border-radius: 8px; }
+        .booking-form button { background: #2c7da0; color: white; border: none; padding: 12px; width: 100%; border-radius: 8px; font-size: 1.1rem; cursor: pointer; }
+        #bookingMessage { margin-top: 15px; text-align: center; }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>کلینیک فیزیوتراپی دکتر اعتصامی فرد</h1>
+            <nav>
+                <ul>
+                    <li><a href="index.html">خانه</a></li>
+                    <li><a href="about.html">درباره ما</a></li>
+                    <li><a href="services.html">خدمات</a></li>
+                    <li><a href="booking.html">رزرو نوبت</a></li>
+                    <li><a href="contact.html">تماس با ما</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <div class="booking-form">
+            <h2>رزرو نوبت آنلاین</h2>
+            <p>لطفاً اطلاعات زیر را وارد کنید. همکاران ما ظرف ۲۴ ساعت نوبت شما را تأیید می‌کنند.</p>
+            <form id="bookingForm">
+                <input type="text" id="full_name" name="full_name" placeholder="نام و نام خانوادگی" required>
+                <input type="tel" id="phone" name="phone" placeholder="شماره تماس" required>
+                <input type="date" id="booking_date" name="booking_date" required>
+                <select id="booking_time" name="booking_time" required>
+                    <option value="">ساعت مورد نظر را انتخاب کنید</option>
+                    <option value="09:00">09:00</option>
+                    <option value="10:00">10:00</option>
+                    <option value="11:00">11:00</option>
+                    <option value="12:00">12:00</option>
+                    <option value="14:00">14:00</option>
+                    <option value="15:00">15:00</option>
+                    <option value="16:00">16:00</option>
+                    <option value="17:00">17:00</option>
+                </select>
+                <textarea id="description" name="description" rows="3" placeholder="توضیحات (مثلاً نوع درد، پزشک مورد نظر...)"></textarea>
+                <button type="submit">ثبت نوبت</button>
+            </form>
+            <div id="bookingMessage"></div>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2025 کلینیک فیزیوتراپی دکتر اعتصامی فرد | تمامی حقوق محفوظ است.</p>
+        </div>
+    </footer>
+
+    <script>
+        document.getElementById('bookingForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+            const formData = new FormData(this);
+            const response = await fetch('../backend/save_booking.php', {
+                method: 'POST',
+                body: formData
+            });
+            const result = await response.json();
+            const msgDiv = document.getElementById('bookingMessage');
+            if(result.success) {
+                msgDiv.style.color = 'green';
+                msgDiv.innerHTML = result.message;
+                this.reset();
+            } else {
+                msgDiv.style.color = 'red';
+                msgDiv.innerHTML = result.message;
+            }
+        });
+    </script>
+</body>
+</html>

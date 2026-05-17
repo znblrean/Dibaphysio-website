@@ -16,3 +16,53 @@ button {
     border-radius: 8px;
     cursor: pointer;
 }
+
+/* ===== بهبود ریسپانسیو ===== */
+@media (max-width: 768px) {
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+    .contact-info .container {
+        flex-direction: column;
+    }
+    .services-list .container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== استایل فرم‌ها و پیام‌ها ===== */
+#contactMessage, #bookingMessage {
+    margin-top: 15px;
+    font-weight: bold;
+}
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #2c7da0;
+    box-shadow: 0 0 5px rgba(44,125,160,0.5);
+}
+
+/* ===== بهبود ریسپانسیو ===== */
+@media (max-width: 768px) {
+    nav ul li {
+        display: block;
+        margin: 10px 0;
+    }
+    .contact-info .container {
+        flex-direction: column;
+    }
+    .services-list .container {
+        grid-template-columns: 1fr;
+    }
+}
+
+/* ===== استایل فرم‌ها و پیام‌ها ===== */
+#contactMessage, #bookingMessage {
+    margin-top: 15px;
+    font-weight: bold;
+}
+input:focus, textarea:focus, select:focus {
+    outline: none;
+    border-color: #2c7da0;
+    box-shadow: 0 0 5px rgba(44,125,160,0.5);
+}
